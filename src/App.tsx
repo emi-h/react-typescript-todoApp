@@ -18,13 +18,15 @@ function App() {
   const handleAdd = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     e.preventDefault();
     // make newTodo
-    const newTodo: Todo = {
-      id: todo.length,
-      value: value,
-      checked: false,
+    if (value !== "") {
+      const newTodo: Todo = {
+        id: todo.length,
+        value: value,
+        checked: false,
+      }
+      setTodo([...todo, newTodo]);
+      setValue('');
     }
-    setTodo([...todo, newTodo]);
-    setValue('');
   };
 
   const handleEdit = (id: number, value: string) => {
