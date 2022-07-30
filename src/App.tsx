@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import './styles/App.css';
+import { v4 as uuidv4 } from 'uuid';
 
 function App() {
   const [value, setValue] = useState<string>('');
   const [todo, setTodo] = useState<Todo[]>([]);
 
   type Todo = {
-    id: number;
+    id: string;
     value: string;
     checked: boolean;
   }
@@ -20,7 +21,7 @@ function App() {
     // make newTodo
     if (value !== "") {
       const newTodo: Todo = {
-        id: todo.length,
+        id: uuidv4(),
         value: value,
         checked: false,
       }
@@ -29,7 +30,7 @@ function App() {
     }
   };
 
-  const handleEdit = (id: number, value: string) => {
+  const handleEdit = (id: string, value: string) => {
     const newTodo = todo.map((todo) => {
       if (todo.id === id) {
         todo.value = value;
@@ -39,7 +40,7 @@ function App() {
 
     setTodo(newTodo);
   };
-  const handleChecked = (id: number, checked: boolean) => {
+  const handleChecked = (id: string, checked: boolean) => {
     const newTodo = todo.map((todo) => {
       if (todo.id === id) {
         todo.checked = !checked;
@@ -49,7 +50,7 @@ function App() {
 
     setTodo(newTodo);
   };
-  const handleDelete = (id: number) => {
+  const handleDelete = (id: string) => {
     const newTodo = todo.filter((todo) => todo.id !== id);
     setTodo(newTodo);
   }
