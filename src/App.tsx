@@ -37,10 +37,20 @@ function App() {
 
     setTodo(newTodo);
   };
-  // const handleDelete = (id: number) => {
-  //   const newTodo = todo.filter((todo) => todo.id !== id);
-  //   setTodo(newTodo);
-  // }
+  const handleChecked = (id: number, checked: boolean) => {
+    const newTodo = todo.map((todo) => {
+      if (todo.id === id) {
+        todo.checked = !checked;
+      }
+      return todo;
+    });
+
+    setTodo(newTodo);
+  };
+  const handleDelete = (id: number) => {
+    const newTodo = todo.filter((todo) => todo.id !== id);
+    setTodo(newTodo);
+  }
 
   return (
     <div className="App">
@@ -54,9 +64,10 @@ function App() {
           {todo.map((todo) => (
             <li key={todo.id}>
               <div className='txt'>
-                <input type="text" className='input' value={todo.value} onChange={(e) => handleEdit(todo.id, e.target.value)} />
+                <input type="text" className='input' value={todo.value} onChange={(e) => handleEdit(todo.id, e.target.value)} disabled={todo.checked} />
+                <input type="checkbox" className='input' onChange={(e) => handleChecked(todo.id, todo.checked)} />
+                <button className='btnDelet' onClick={() => handleDelete(todo.id)}>-</button>
               </div>
-              {/* <button className='btnDelet' onClick={() => handleDelete(todo.id)}>-</button> */}
             </li>
           ))}
         </ul>
