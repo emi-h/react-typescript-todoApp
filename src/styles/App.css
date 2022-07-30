@@ -1,3 +1,48 @@
 .App {
   text-align: center;
+  margin-top: 30px;
+}
+.app_inner{
+  width: 320px;
+  max-width: 100%;
+  padding: 0 15px;
+  margin: 0 auto;
+}
+.inputArea{
+  display: flex;
+  justify-content: space-between;
+}
+.input{
+  padding: 10px;
+  border-radius: 5px;
+  width: calc(100% - 80px);
+}
+.btnAdd,.btnDelet{
+  width: 50px;
+  height: 50px;
+  background-color: transparent;
+  border-radius: 5px;
+  border: none;
+  box-shadow: 5px 5px 5px 0 #ccc;
+  font-size: 20px;
+}
+.btnAdd{
+  background-color: gold;
+}
+.btnDelet{
+  background-color: red;
+}
+.todolist{
+  list-style: none;
+  padding-left: 0;
+}
+.todolist li{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 1em 0;
+}
+.todolist li .txt{
+  font-size: 1.8rem;
+  font-weight: bold;
 }
